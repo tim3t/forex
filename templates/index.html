@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/app.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha256-/ykJw/wDxMa0AQhHDYfuMEwVb4JHMx9h4jD4XvHqVzU=" crossorigin="anonymous"/>
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <p>Please input the three-character currency codes (ex: "USD", "GBP") and amount to convert.</p>
+
+    <form method="POST">
+    <div id="form">
+        <label for="curr_fr">
+            Converting from</label>
+            <input type="text" 
+            id="curr_fr" 
+            name="curr_fr" 
+            minlength="3" 
+            maxlength="3"><br>
+
+        <label for="curr_to">
+            Converting to</label>
+            <input type="text" 
+            id="curr_to" 
+            name="curr_to" 
+            minlength="3" 
+            maxlength="3"><br>
+
+        <label for="amount">
+            Amount</label>
+            <input type="text" 
+            id="amount" 
+            name="amount"><br>
+
+        <button type="submit" id="button" class = 'btn btn-primary'>Convert!</button>
+    </form>
+
+</div>
+</body>
+</html>
