@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, session
 from forex_python.converter import CurrencyRates
 
+c = CurrencyRates(force_decimal=False)
 CURRENT_AMOUNT_KEY = 'amount'
 
 app = Flask(__name__)
@@ -22,14 +23,16 @@ def convert_form_page():
 def handle_convert_form():
     """Form handling for conversion"""
 
+    curr_fr = request.form["curr_fr"]
+    curr_to = request.form["curr_to"]
     amount = request.form["amount"]
-    session[CURRENT_AMOUNT_KEY] = amount
+    converted = c.convert(f"{curr_fr}", f"{curr_to}", amount)
+    converted = session[CURRENT_AMOUNT_KEY]
     return redirect("/conversion")
 
 @app.route('/conversion')
 def show_conversion():
     """Show conversion"""
 
-    amount = request.form['amount']
-    session[CURRENT_AMOUNT_KEY] = amount
+    amount = session[CURRENT_AMOUNT_KEY]
     return render_template("result.html", amount = amount)
